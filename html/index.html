@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>DingDemo</title>
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta http-equiv="cleartype" content="on">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="format-detection" content="email=no">
+
+  <!-- 外部样式资源加载 -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- 外部脚本资源加载 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="//g.alicdn.com/platform/c/??react/0.14.3/react-with-addons.min.js,react/0.14.3/react-dom.min.js,react-router/2.0.0/umd/ReactRouter.min.js,fastclick/1.0.6/lib/fastclick.min.js,lie/3.0.2/dist/lie.polyfill.min.js,salt-router/0.0.2/salt-router.min.js"></script>
+  <script src="https://g.alicdn.com/dingding/open-develop/1.9.0/dingtalk.js"></script>
+  <script src="./js/dingScore.js"></script>
+  <script src="./js/dingTool.js"></script>
+
+</head>
+
+<body class="page-home">
+
+<div id="loading" class="lds-svg" onclick="handleClick()">
+  <svg class="lds-balls" width="50%" height="50%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+    <circle cx="66.3126" cy="53.6875" r="5" fill="#0099e5">
+      <animate attributeName="cx" values="70;50" keyTimes="0;1" dur="0.8s" repeatCount="indefinite"></animate>
+      <animate attributeName="cy" values="50;70" keyTimes="0;1" dur="0.8s" repeatCount="indefinite"></animate>
+      <animate attributeName="fill" values="#0099e5;#ff4c4c" keyTimes="0;1" dur="0.8s" repeatCount="indefinite"></animate>
+    </circle>
+    <circle cx="46.3125" cy="66.3126" r="5" fill="#ff4c4c">
+      <animate attributeName="cx" values="50;30" keyTimes="0;1" dur="0.8s" repeatCount="indefinite"></animate>
+      <animate attributeName="cy" values="70;50" keyTimes="0;1" dur="0.8s" repeatCount="indefinite"></animate>
+      <animate attributeName="fill" values="#ff4c4c;#34bf49" keyTimes="0;1" dur="0.8s" repeatCount="indefinite"></animate>
+    </circle>
+    <circle cx="33.6875" cy="46.3125" r="5" fill="#34bf49">
+      <animate attributeName="cx" values="30;49.99999999999999" keyTimes="0;1" dur="0.8s" repeatCount="indefinite"></animate>
+      <animate attributeName="cy" values="50;30" keyTimes="0;1" dur="0.8s" repeatCount="indefinite"></animate>
+      <animate attributeName="fill" values="#34bf49;#0099e5" keyTimes="0;1" dur="0.8s" repeatCount="indefinite"></animate>
+    </circle>
+    <circle cx="53.6875" cy="33.6875" r="5" fill="#0099e5">
+      <animate attributeName="cx" values="49.99999999999999;70" keyTimes="0;1" dur="0.8s" repeatCount="indefinite"></animate>
+      <animate attributeName="cy" values="30;49.99999999999999" keyTimes="0;1" dur="0.8s" repeatCount="indefinite"></animate>
+      <animate attributeName="fill" values="#0099e5;#0099e5" keyTimes="0;1" dur="0.8s" repeatCount="indefinite"></animate>
+    </circle>
+</svg>
+</div>
+
+<script type="text/babel">
+
+// 用户信息
+var userInfo = {};
+$(function () {
+  // 获取用户信息
+  dd.ready(function () {
+
+        setLeftClose();
+        dd.runtime.permission.requestAuthCode({
+            corpId: _config.corpId,
+            onSuccess: function (result) {
+
+                var authCode = result.code;
+                userInfo = getUserInfo(authCode);
+                console.log(JSON.stringify(userInfo));
+
+            },
+            onFail: function (err) {
+              console.log(JSON.stringify(err));
+             }
+        });
+    });
+});
+
+
+function handleClick() {
+    salt.router.push({
+        id: 'next',
+        url: './next.html?showmenu=false',
+        anim: 1,
+        needPost: true,
+        param: userInfo,
+    }).then().catch(function (e) {
+        if (e.errorCode === 1001) {
+            location.href = './next.html';
+        }
+    });
+}
+
+
+
+
+</script>
+
+</body>
+
+</html>

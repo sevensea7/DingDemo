@@ -1,0 +1,31 @@
+{
+  "name": "ScoreDemo",
+  "options": {
+    "type": "salt",
+    "template": "/Users/Huizhuang/.nowa-gui/template/nowa-template-salt-v_2",
+    "npm": "http://registry.npmjs.org",
+    "vars": {
+      "__LOCAL__": true
+    },
+    "buildvars": {
+      "__LOCAL__": [
+        false
+      ]
+    },
+    "injects": [
+      "saltui"
+    ],
+    "alias": {
+      "pages": "pages",
+      "components": "components",
+      "db": "app/db.js",
+      "variables": "app/variables.js"
+    },
+    "src": "src",
+    "port": "3000",
+    "entry": "app/app.js",
+    "lazyload": true,
+    "open": false,
+    "https": false
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "DingDemo",
+  "author": "qihai",
+  "version": "1.0.0",
+  "description": "A ding demo project",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "start": "nowa server",
+    "build": "nowa build"
+  },
+  "homepage": "",
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "classnames": "~2.1.2",
+    "eslint": "^4.19.1",
+    "jquery": "^3.3.1",
+    "natty-fetch": "~2.4.2",
+    "natty-storage": "~2.0.2",
+    "refast": "~1.2.3",
+    "saltui": "^3.1.17"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.6.2"
+  }
+}
