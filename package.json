@@ -20,7 +20,7 @@
     "babel-polyfill": "^6.26.0",
     "classnames": "~2.1.2",
     "eslint": "^4.19.1",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "natty-fetch": "~2.4.2",
     "natty-storage": "~2.0.2",
     "refast": "~1.2.3",
